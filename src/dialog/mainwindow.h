@@ -104,6 +104,8 @@ signals:
 private slots:
     void createLogDialog();
 
+    void on_btnLogIn_clicked();
+
 private:
     static QString normalize_byte_size(uint64_t bytes);
     void createTrayIcon();

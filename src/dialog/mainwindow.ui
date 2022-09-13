@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>436</width>
-    <height>236</height>
+    <width>697</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>436</width>
-    <height>236</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>436</width>
-    <height>236</height>
+    <width>1920</width>
+    <height>1080</height>
    </size>
   </property>
   <property name="windowIcon">
@@ -69,12 +69,111 @@
       <property name="movable">
        <bool>false</bool>
       </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Main</string>
+       </attribute>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>40</y>
+          <width>51</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;黑体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>服务器</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>110</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;黑体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>手机号</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>180</y>
+          <width>61</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;黑体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>验证码</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="sslServerList">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>40</y>
+          <width>409</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editPhoneNum">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>110</y>
+          <width>411</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="editIdCode">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>180</y>
+          <width>411</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLogIn">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>250</y>
+          <width>411</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;黑体&quot;;</string>
+        </property>
+        <property name="text">
+         <string> 登 录</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="tabWidget_main">
        <property name="accessibleName">
         <string/>
        </property>
        <attribute name="title">
-        <string>Main</string>
+        <string>Connect</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
@@ -304,8 +403,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>436</width>
-     <height>20</height>
+     <width>697</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

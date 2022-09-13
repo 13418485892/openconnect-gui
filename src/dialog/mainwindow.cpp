@@ -954,3 +954,99 @@ void MainWindow::on_actionWebSite_triggered()
 {
     QDesktopServices::openUrl(QUrl("https://openconnect.github.io/openconnect-gui"));
 }
+
+void MainWindow::on_btnLogIn_clicked()
+{
+    VpnInfo* vpninfo = nullptr;
+    StoredServer* ss = new StoredServer();
+    QFuture<void> future;
+    QString name, url;
+    QList<QNetworkProxy> proxies;
+    QUrl turl;
+    QNetworkProxyQuery query;
+
+    if (this->cmd_fd != INVALID_SOCKET) {
+        QMessageBox::information(this,
+            qApp->applicationName(),
+            tr("A previous VPN instance is still running (socket is active)"));
+        return;
+    }
+
+    if (this->futureWatcher.isRunning() == true) {
+        QMessageBox::information(this,
+            qApp->applicationName(),
+            tr("A previous VPN instance is still running"));
+        return;
+    }
+
+    // 得到当前服务器列表ip
+    if (ui->sslServerList->currentText().isEmpty()) {
+        QMessageBox::information(this,
+            qApp->applicationName(),
+            tr("You need to specify a gateway. e.g. vpn.example.com:443"));
+        return;
+    }
+
+    name = ui->sslServerList->currentText();
+    ss->load(name);
+    turl.setUrl("https://" + ss->get_servername());
+    query.setUrl(turl);
+
+    /* ss is now deallocated by vpninfo */
+    try {
+        vpninfo = new VpnInfo(QStringLiteral("Open AnyConnect VPN Agent"), ss, this);
+    } catch (std::exception& ex) {
+        QMessageBox::information(this,
+            qApp->applicationName(),
+            tr("There was an issue initializing the VPN ") + "(" + ex.what() + ").");
+        goto fail;
+    }
+
+    this->minimize_on_connect = vpninfo->get_minimize();
+
+    vpninfo->parse_url(ss->get_servername().toLocal8Bit().data());
+
+    this->cmd_fd = vpninfo->get_cmd_fd();
+    if (this->cmd_fd == INVALID_SOCKET) {
+        QMessageBox::information(this,
+            qApp->applicationName(),
+            tr("There was an issue establishing IPC with openconnect; try restarting the application."));
+        goto fail;
+    }
+
+    if (ss->get_proxy()) {
+        proxies = QNetworkProxyFactory::systemProxyForQuery(query);
+        if (proxies.size() > 0 && proxies.at(0).type() != QNetworkProxy::NoProxy) {
+            if (proxies.at(0).type() == QNetworkProxy::Socks5Proxy)
+                url = "socks5://";
+            else if (proxies.at(0).type() == QNetworkProxy::HttpCachingProxy
+                || proxies.at(0).type() == QNetworkProxy::HttpProxy)
+                url = "http://";
+
+            if (url.isEmpty() == false) {
+
+                QString str;
+                if (proxies.at(0).user() != 0) {
+                    str = proxies.at(0).user() + ":" + proxies.at(0).password() + "@";
+                }
+                str += proxies.at(0).hostName();
+                if (proxies.at(0).port() != 0) {
+                    str += ":" + QString::number(proxies.at(0).port());
+                }
+                Logger::instance().addMessage(tr("Setting proxy to: ") + str);
+                // FIXME: ...
+                int ret = openconnect_set_http_proxy(vpninfo->vpninfo, str.toLatin1().data());
+            }
+        }
+    }
+
+    future = QtConcurrent::run(main_loop, vpninfo, this);
+
+    this->futureWatcher.setFuture(future);
+
+    return;
+fail: // LCA: remote 'fail' label :/
+    if (vpninfo != nullptr)
+        delete vpninfo;
+    return;
+}
