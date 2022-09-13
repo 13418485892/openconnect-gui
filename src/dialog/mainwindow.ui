@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>697</width>
-    <height>384</height>
+    <width>661</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -164,7 +164,42 @@
          <string notr="true">font: 12pt &quot;黑体&quot;;</string>
         </property>
         <property name="text">
-         <string> 登 录</string>
+         <string>登 录</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="iconLabel">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>130</y>
+          <width>80</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="connectionButton">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>290</y>
+          <width>411</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;黑体&quot;;</string>
+        </property>
+        <property name="text">
+         <string>connect</string>
         </property>
        </widget>
       </widget>
@@ -184,7 +219,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="iconLabel">
+             <widget class="QLabel" name="iconLabel3">
               <property name="maximumSize">
                <size>
                 <width>80</width>
@@ -234,7 +269,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_Buttons" stretch="4,0">
               <item>
-               <widget class="QPushButton" name="connectionButton">
+               <widget class="QPushButton" name="connectionButton2">
                 <property name="text">
                  <string>Connect</string>
                 </property>
@@ -403,7 +438,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>697</width>
+     <width>661</width>
      <height>23</height>
     </rect>
    </property>
