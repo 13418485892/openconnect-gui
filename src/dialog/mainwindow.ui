@@ -121,7 +121,7 @@
          <string>验证码</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="sslServerList">
+       <widget class="QComboBox" name="serverList">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -210,7 +210,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="serverList"/>
+               <widget class="QComboBox" name="vpnServerList"/>
               </item>
               <item>
                <widget class="QToolButton" name="serverListControl">

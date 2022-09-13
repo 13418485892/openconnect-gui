@@ -979,15 +979,15 @@ void MainWindow::on_btnLogIn_clicked()
         return;
     }
 
-    // 得到当前服务器列表ip
-    if (ui->sslServerList->currentText().isEmpty()) {
+    // 得到当前服务器列表ip, 这里的IP应该是初始化来的
+    if (ui->serverList->currentText().isEmpty()) {
         QMessageBox::information(this,
             qApp->applicationName(),
             tr("You need to specify a gateway. e.g. vpn.example.com:443"));
         return;
     }
 
-    name = ui->sslServerList->currentText();
+    name = ui->serverList->currentText();
     ss->load(name);
     turl.setUrl("https://" + ss->get_servername());
     query.setUrl(turl);
