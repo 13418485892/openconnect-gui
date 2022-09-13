@@ -153,7 +153,8 @@ int main(int argc, char* argv[])
             return 0;
         }
     }
-    app.setApplicationDisplayName(appDescriptionLong);
+    //app.setApplicationDisplayName(appDescriptionLong);
+    app.setApplicationDisplayName("远程办公客户端");
     app.setQuitOnLastWindowClosed(false);
 
 #if defined(Q_OS_MACOS) && defined(PROJ_ADMIN_PRIV_ELEVATION)
