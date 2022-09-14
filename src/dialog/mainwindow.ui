@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../openconnect-gui.qrc">
-    <normaloff>:/Resources/mono_lock.png</normaloff>:/Resources/mono_lock.png</iconset>
+    <normaloff>:/Resources/ssl_vpn_client.png</normaloff>:/Resources/ssl_vpn_client.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -433,63 +433,6 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>661</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>&amp;File</string>
-    </property>
-    <widget class="QMenu" name="menuProfiles">
-     <property name="title">
-      <string>&amp;Profiles</string>
-     </property>
-     <addaction name="actionNewProfile"/>
-     <addaction name="actionNewProfileAdvanced"/>
-     <addaction name="actionEditSelectedProfile"/>
-     <addaction name="actionRemoveSelectedProfile"/>
-    </widget>
-    <addaction name="menuProfiles"/>
-    <addaction name="separator"/>
-    <addaction name="actionQuit"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>&amp;Help</string>
-    </property>
-    <addaction name="actionWebSite"/>
-    <addaction name="separator"/>
-    <addaction name="actionAbout"/>
-    <addaction name="actionAboutQt"/>
-   </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>&amp;View</string>
-    </property>
-    <addaction name="actionLogWindow"/>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>&amp;Settings</string>
-    </property>
-    <addaction name="actionMinimizeToTheNotificationArea"/>
-    <addaction name="actionMinimizeTheApplicationInsteadOfClosing"/>
-    <addaction name="separator"/>
-    <addaction name="actionStartMinimized"/>
-    <addaction name="separator"/>
-    <addaction name="actionSingleInstanceMode"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuView"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuHelp"/>
-  </widget>
   <action name="actionQuit">
    <property name="text">
     <string>&amp;Quit</string>

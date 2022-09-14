@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="">
+    <qresource prefix="/">
         <file>images/trashcan.png</file>
         <file>images/text-editor.png</file>
         <file>images/network-wired.png</file>
@@ -16,5 +16,8 @@
         <file>images/profiles.png</file>
         <file>images/text-new.png</file>
         <file>Resources/mono_lock.png</file>
+        <file>Resources/ssl_vpn_client.png</file>
+        <file>Resources/mono_lock.icns</file>
+        <file>Resources/openconnect-gui.plist.in</file>
     </qresource>
 </RCC>
