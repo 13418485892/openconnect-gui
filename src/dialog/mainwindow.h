@@ -106,6 +106,8 @@ private slots:
 
     void on_btnLogIn_clicked();
 
+    void on_btnGetIdCode_clicked();
+
 private:
     static QString normalize_byte_size(uint64_t bytes);
     void createTrayIcon();
@@ -113,6 +115,13 @@ private:
     void readSettings();
     void writeSettings();
 
+    //增加验证函数
+private:
+    bool IsValidPhoneNumber(const QString &phoneNum);
+    bool IsValidIdCode(const QString &idCode);
+
+
+private:
     /* we keep the fd instead of a pointer to vpninfo to avoid
      * any multithread issues */
     SOCKET cmd_fd;
