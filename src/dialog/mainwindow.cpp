@@ -202,7 +202,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
 
     QMenu* serverProfilesMenu = new QMenu(this);
     serverProfilesMenu->addAction(ui->actionNewProfile);
-    serverProfilesMenu->addAction(ui->actionNewProfileAdvanced);
+    //serverProfilesMenu->addAction(ui->actionNewProfileAdvanced);
     serverProfilesMenu->addAction(ui->actionEditSelectedProfile);
     serverProfilesMenu->addAction(ui->actionRemoveSelectedProfile);
     ui->serverListControl->setMenu(serverProfilesMenu);
