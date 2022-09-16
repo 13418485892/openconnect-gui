@@ -103,9 +103,6 @@ signals:
 
 private slots:
     void createLogDialog();
-
-    void on_btnLogIn_clicked();
-
     void on_btnGetIdCode_clicked();
 
 private:

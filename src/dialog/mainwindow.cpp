@@ -955,15 +955,6 @@ void MainWindow::on_actionWebSite_triggered()
     QDesktopServices::openUrl(QUrl("https://openconnect.github.io/openconnect-gui"));
 }
 
-// 点击登录按钮
-void MainWindow::on_btnLogIn_clicked()
-{
-    QString idCode = ui->editIdCode->text();
-    if (this->IsValidIdCode(idCode) == false){
-        QMessageBox::about(NULL,"about","验证码不合法");
-    }
-}
-
 // 获取验证码
 void MainWindow::on_btnGetIdCode_clicked()
 {

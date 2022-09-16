@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>412</width>
-    <height>563</height>
+    <height>549</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -153,6 +153,19 @@
        </item>
       </layout>
      </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="caCertHash">
+       <property name="styleSheet">
+        <string notr="true">background-color:&quot;transparent&quot;</string>
+       </property>
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
      <item row="6" column="0">
       <widget class="QLabel" name="serverCertificateLabel">
        <property name="text">
@@ -271,19 +284,6 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="caCertHash">
-       <property name="styleSheet">
-        <string notr="true">background-color:&quot;transparent&quot;</string>
-       </property>
-       <property name="frame">
-        <bool>false</bool>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -460,6 +460,9 @@
    <item>
     <widget class="QGroupBox" name="settingsGroupBox">
      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
       <item>
        <layout class="QFormLayout" name="formLayout_3">
         <property name="fieldGrowthPolicy">
