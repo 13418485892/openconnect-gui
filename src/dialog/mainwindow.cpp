@@ -877,6 +877,7 @@ void MainWindow::on_actionEditSelectedProfile_triggered()
 void MainWindow::on_actionRemoveSelectedProfile_triggered()
 {
     QMessageBox mbox;
+    mbox.setWindowIcon(QIcon(":/Resources/ssl_vpn_client.png"));
     mbox.setText(tr("Are you sure you want to remove '%1' host?").arg(ui->serverList->currentText()));
     mbox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
     mbox.setDefaultButton(QMessageBox::Cancel);
