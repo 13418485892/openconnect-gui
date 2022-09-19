@@ -930,11 +930,22 @@ void MainWindow::on_btnGetIdCode_clicked()
 {
     QString phoneNum = ui->editPhoneNum->text();
     if (this->IsValidPhoneNumber(phoneNum)== false){
-        QMessageBox::about(NULL,"about","手机号码不合法");
-        return;
+        QMessageBox msgBox(QMessageBox::Warning,
+                "phone",
+                "手机号码不合法",
+                QMessageBox::Ok, this);
+        msgBox.setIcon(QMessageBox::NoIcon);
+        msgBox.exec();
     }
-    QString strTip = "验证码已经发送您的手机"+phoneNum+",60秒内请不要重复发送";
-    QMessageBox::about(NULL,"about",strTip);
+    else {
+        QString strTip = "验证码已经发送您的手机"+phoneNum+",60秒内请不要重复发送";
+        QMessageBox msgBox(QMessageBox::Warning,
+                "phone",
+                strTip,
+                QMessageBox::Ok, this);
+        msgBox.setIcon(QMessageBox::NoIcon);
+        msgBox.exec();
+    }
 }
 
 // 检测手机号的合法性
