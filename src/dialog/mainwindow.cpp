@@ -955,18 +955,6 @@ void MainWindow::on_actionWebSite_triggered()
     QDesktopServices::openUrl(QUrl("https://openconnect.github.io/openconnect-gui"));
 }
 
-// 获取验证码
-void MainWindow::on_btnGetIdCode_clicked()
-{
-    QString phoneNum = ui->editPhoneNum->text();
-    if (this->IsValidPhoneNumber(phoneNum)== false){
-        QMessageBox::about(NULL,"about","手机号码不合法");
-        return;
-    }
-    QString strTip = "验证码已经发送您的手机"+phoneNum+",60秒内请不要重复发送";
-    QMessageBox::about(NULL,"about",strTip);
-}
-
 // 检测手机号的合法性
 bool MainWindow::IsValidPhoneNumber(const QString &phoneNum)
 {
