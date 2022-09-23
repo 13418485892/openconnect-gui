@@ -62,11 +62,11 @@ if(MINGW)
 endif()
 if(APPLE)
     list(APPEND ${PROJECT_NAME}_RESOURCES
-        Resources/mono_lock.icns
+        Resources/ssl_vpn_client.icns
         ${OPENCONNECT_VPNC_SCRIPT}
     )
     set_source_files_properties(
-        Resources/mono_lock.icns
+        Resources/ssl_vpn_client.icns
         ${OPENCONNECT_VPNC_SCRIPT}
             PROPERTIES MACOSX_PACKAGE_LOCATION Resources
     )
@@ -125,7 +125,7 @@ if(APPLE)
         MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
         MACOSX_BUNDLE_COPYRIGHT "${PRODUCT_NAME_COPYRIGHT_SHORT}"
         MACOSX_BUNDLE_GUI_IDENTIFIER io.github.openconnect.openconnect-gui
-        MACOSX_BUNDLE_ICON_FILE mono_lock.icns
+        MACOSX_BUNDLE_ICON_FILE ssl_vpn_client.icns
         MACOSX_BUNDLE_INFO_STRING ${PRODUCT_NAME_LONG}
     )
 endif()

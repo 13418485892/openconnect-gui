@@ -9,6 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
+    <width>600</width>
+    <height>300</height>
     <width>646</width>
     <height>253</height>
    </rect>
@@ -21,14 +23,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
-    <height>0</height>
+    <width>600</width>
+    <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1920</width>
-    <height>1080</height>
+    <width>600</width>
+    <height>300</height>
    </size>
   </property>
   <property name="windowIcon">
@@ -76,7 +78,7 @@
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>30</x>
           <y>40</y>
           <width>51</width>
           <height>21</height>
@@ -89,13 +91,14 @@
          <string>服务器</string>
         </property>
        </widget>
+
        <widget class="QComboBox" name="serverList">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>100</x>
           <y>40</y>
-          <width>409</width>
-          <height>31</height>
+          <width>410</width>
+          <height>30</height>
          </rect>
         </property>
        </widget>
@@ -137,7 +140,7 @@
        <widget class="QToolButton" name="serverListControl">
         <property name="geometry">
          <rect>
-          <x>530</x>
+          <x>520</x>
           <y>40</y>
           <width>31</width>
           <height>31</height>
@@ -175,140 +178,9 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tabWidget_vpnInfo">
-       <attribute name="title">
-        <string>VPN 信息</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <layout class="QFormLayout" name="formLayout">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::ExpandingFieldsGrow</enum>
-          </property>
-          <property name="formAlignment">
-           <set>Qt::AlignJustify|Qt::AlignTop</set>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="ipV4LabelText">
-            <property name="text">
-             <string>IPv4:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="ipV4Label">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="ipV6LabelText">
-            <property name="text">
-             <string>IPv6:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="ipV6Label">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="dnsLabelText">
-            <property name="text">
-             <string>DNS:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="dnsLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="cipherCSTPLabelText">
-            <property name="text">
-             <string>Cipher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="cipherCSTPLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="cipherDTLSLabelText">
-            <property name="text">
-             <string>DTLS Cipher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="cipherDTLSLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="downloadLabelText">
-            <property name="text">
-             <string>Download:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="uploadLaberText">
-            <property name="text">
-             <string>Upload:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="downloadLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLabel" name="uploadLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
           </item>
          </layout>
-        </item>
-       </layout>
       </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
    <property name="text">
