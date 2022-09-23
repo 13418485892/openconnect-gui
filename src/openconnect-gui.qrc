@@ -19,6 +19,5 @@
         <file>Resources/ssl_vpn_client.png</file>
         <file>Resources/mono_lock.icns</file>
         <file>Resources/openconnect-gui.plist.in</file>
-        <file>Resources/ssl_vpn_client.icns</file>
     </qresource>
 </RCC>

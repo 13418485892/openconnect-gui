@@ -69,6 +69,9 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
 {
     ui->setupUi(this);
 
+    connect(ui->viewLogButton, &QPushButton::clicked,
+        this, &MainWindow::createLogDialog);
+
     timer = new QTimer(this);
     blink_timer = new QTimer(this);
     this->cmd_fd = INVALID_SOCKET;
@@ -202,7 +205,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
 
     QMenu* serverProfilesMenu = new QMenu(this);
     serverProfilesMenu->addAction(ui->actionNewProfile);
-    //serverProfilesMenu->addAction(ui->actionNewProfileAdvanced);
+    serverProfilesMenu->addAction(ui->actionNewProfileAdvanced);
     serverProfilesMenu->addAction(ui->actionEditSelectedProfile);
     serverProfilesMenu->addAction(ui->actionRemoveSelectedProfile);
     ui->serverListControl->setMenu(serverProfilesMenu);
@@ -375,7 +378,9 @@ QString MainWindow::normalize_byte_size(uint64_t bytes)
 
 void MainWindow::statsChanged(QString tx, QString rx, QString dtls)
 {
-
+    ui->downloadLabel->setText(rx);
+    ui->uploadLabel->setText(tx);
+    ui->cipherDTLSLabel->setText(dtls);
 }
 
 void MainWindow::updateStats(const struct oc_stats* stats, QString dtls)
@@ -444,6 +449,11 @@ void MainWindow::changeStatus(int val)
         icon.setIsMask(true);
         m_trayIcon->setIcon(icon);
 
+        this->ui->ipV4Label->setText(ip);
+        this->ui->ipV6Label->setText(ip6);
+        this->ui->dnsLabel->setText(dns);
+        this->ui->cipherCSTPLabel->setText(cstp_cipher);
+        this->ui->cipherDTLSLabel->setText(dtls_cipher);
 
         timer->start(UPDATE_TIMER);
 
@@ -488,7 +498,13 @@ void MainWindow::changeStatus(int val)
         }
         cmd_fd = INVALID_SOCKET;
 
-
+        ui->ipV4Label->clear();
+        ui->ipV6Label->clear();
+        ui->dnsLabel->clear();
+        ui->uploadLabel->clear();
+        ui->downloadLabel->clear();
+        ui->cipherCSTPLabel->clear();
+        ui->cipherDTLSLabel->clear();
         Logger::instance().addMessage(QObject::tr("Disconnected"));
 
         ui->serverList->setEnabled(true);
@@ -779,6 +795,21 @@ void MainWindow::createLogDialog()
 {
     auto dialog{ new LogDialog() };
 
+    disconnect(ui->viewLogButton, &QPushButton::clicked,
+        this, &MainWindow::createLogDialog);
+
+    connect(ui->viewLogButton, &QPushButton::clicked,
+        dialog, &QDialog::show);
+    connect(ui->viewLogButton, &QPushButton::clicked,
+        dialog, &QDialog::raise);
+    connect(ui->viewLogButton, &QPushButton::clicked,
+        dialog, &QDialog::activateWindow);
+
+    connect(dialog, &QDialog::finished,
+        [this]() {
+            connect(ui->viewLogButton, &QPushButton::clicked,
+                this, &MainWindow::createLogDialog);
+        });
     connect(dialog, &QDialog::finished,
         dialog, &QDialog::deleteLater);
 
@@ -877,7 +908,6 @@ void MainWindow::on_actionEditSelectedProfile_triggered()
 void MainWindow::on_actionRemoveSelectedProfile_triggered()
 {
     QMessageBox mbox;
-    mbox.setWindowIcon(QIcon(":/Resources/ssl_vpn_client.png"));
     mbox.setText(tr("Are you sure you want to remove '%1' host?").arg(ui->serverList->currentText()));
     mbox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
     mbox.setDefaultButton(QMessageBox::Cancel);
@@ -923,6 +953,18 @@ void MainWindow::on_actionAboutQt_triggered()
 void MainWindow::on_actionWebSite_triggered()
 {
     QDesktopServices::openUrl(QUrl("https://openconnect.github.io/openconnect-gui"));
+}
+
+// 获取验证码
+void MainWindow::on_btnGetIdCode_clicked()
+{
+    QString phoneNum = ui->editPhoneNum->text();
+    if (this->IsValidPhoneNumber(phoneNum)== false){
+        QMessageBox::about(NULL,"about","手机号码不合法");
+        return;
+    }
+    QString strTip = "验证码已经发送您的手机"+phoneNum+",60秒内请不要重复发送";
+    QMessageBox::about(NULL,"about",strTip);
 }
 
 // 检测手机号的合法性
