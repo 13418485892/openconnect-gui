@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
-    <height>287</height>
+    <width>610</width>
+    <height>235</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
-    <height>0</height>
+    <width>610</width>
+    <height>235</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1920</width>
-    <height>1080</height>
+    <width>610</width>
+    <height>235</height>
    </size>
   </property>
   <property name="windowIcon">
@@ -71,7 +71,7 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string> 主页</string>
+        <string>主页</string>
        </attribute>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -103,7 +103,7 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>100</y>
+          <y>80</y>
           <width>80</width>
           <height>80</height>
          </rect>
@@ -122,7 +122,7 @@
         <property name="geometry">
          <rect>
           <x>110</x>
-          <y>130</y>
+          <y>110</y>
           <width>411</width>
           <height>31</height>
          </rect>
@@ -157,153 +157,6 @@
          <enum>QToolButton::InstantPopup</enum>
         </property>
        </widget>
-       <widget class="QPushButton" name="viewLogButton">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>130</y>
-          <width>76</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>View log</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../openconnect-gui.qrc">
-          <normaloff>:/images/edit-find.png</normaloff>:/images/edit-find.png</iconset>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tabWidget_vpnInfo">
-       <attribute name="title">
-        <string>VPN 信息</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <layout class="QFormLayout" name="formLayout">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::ExpandingFieldsGrow</enum>
-          </property>
-          <property name="formAlignment">
-           <set>Qt::AlignJustify|Qt::AlignTop</set>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="ipV4LabelText">
-            <property name="text">
-             <string>IPv4:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="ipV4Label">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="ipV6LabelText">
-            <property name="text">
-             <string>IPv6:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="ipV6Label">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="dnsLabelText">
-            <property name="text">
-             <string>DNS:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="dnsLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="cipherCSTPLabelText">
-            <property name="text">
-             <string>Cipher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="cipherCSTPLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="cipherDTLSLabelText">
-            <property name="text">
-             <string>DTLS Cipher:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="cipherDTLSLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="downloadLabelText">
-            <property name="text">
-             <string>Download:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="uploadLaberText">
-            <property name="text">
-             <string>Upload:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="downloadLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLabel" name="uploadLabel">
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="textInteractionFlags">
-             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
       </widget>
      </widget>
     </item>
@@ -453,7 +306,7 @@
      <normaloff>:/images/text-new.png</normaloff>:/images/text-new.png</iconset>
    </property>
    <property name="text">
-    <string>New profile (&amp;advanced)</string>
+    <string>New profile</string>
    </property>
    <property name="toolTip">
     <string>New profile (advanced setup)</string>

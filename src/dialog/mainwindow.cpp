@@ -69,8 +69,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
 {
     ui->setupUi(this);
 
-    connect(ui->viewLogButton, &QPushButton::clicked,
-        this, &MainWindow::createLogDialog);
+    //connect(ui->viewLogButton, &QPushButton::clicked, this, &MainWindow::createLogDialog);
 
     timer = new QTimer(this);
     blink_timer = new QTimer(this);
@@ -204,7 +203,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     });
 
     QMenu* serverProfilesMenu = new QMenu(this);
-    serverProfilesMenu->addAction(ui->actionNewProfile);
+    //serverProfilesMenu->addAction(ui->actionNewProfile);
     serverProfilesMenu->addAction(ui->actionNewProfileAdvanced);
     serverProfilesMenu->addAction(ui->actionEditSelectedProfile);
     serverProfilesMenu->addAction(ui->actionRemoveSelectedProfile);
@@ -378,9 +377,9 @@ QString MainWindow::normalize_byte_size(uint64_t bytes)
 
 void MainWindow::statsChanged(QString tx, QString rx, QString dtls)
 {
-    ui->downloadLabel->setText(rx);
-    ui->uploadLabel->setText(tx);
-    ui->cipherDTLSLabel->setText(dtls);
+    //ui->downloadLabel->setText(rx);
+    //ui->uploadLabel->setText(tx);
+    //ui->cipherDTLSLabel->setText(dtls);
 }
 
 void MainWindow::updateStats(const struct oc_stats* stats, QString dtls)
@@ -449,11 +448,11 @@ void MainWindow::changeStatus(int val)
         icon.setIsMask(true);
         m_trayIcon->setIcon(icon);
 
-        this->ui->ipV4Label->setText(ip);
-        this->ui->ipV6Label->setText(ip6);
-        this->ui->dnsLabel->setText(dns);
-        this->ui->cipherCSTPLabel->setText(cstp_cipher);
-        this->ui->cipherDTLSLabel->setText(dtls_cipher);
+        //this->ui->ipV4Label->setText(ip);
+        //this->ui->ipV6Label->setText(ip6);
+        //this->ui->dnsLabel->setText(dns);
+        //this->ui->cipherCSTPLabel->setText(cstp_cipher);
+        //this->ui->cipherDTLSLabel->setText(dtls_cipher);
 
         timer->start(UPDATE_TIMER);
 
@@ -498,13 +497,13 @@ void MainWindow::changeStatus(int val)
         }
         cmd_fd = INVALID_SOCKET;
 
-        ui->ipV4Label->clear();
-        ui->ipV6Label->clear();
-        ui->dnsLabel->clear();
-        ui->uploadLabel->clear();
-        ui->downloadLabel->clear();
-        ui->cipherCSTPLabel->clear();
-        ui->cipherDTLSLabel->clear();
+        //ui->ipV4Label->clear();
+        //ui->ipV6Label->clear();
+        //ui->dnsLabel->clear();
+        //ui->uploadLabel->clear();
+        //ui->downloadLabel->clear();
+        //ui->cipherCSTPLabel->clear();
+        //ui->cipherDTLSLabel->clear();
         Logger::instance().addMessage(QObject::tr("Disconnected"));
 
         ui->serverList->setEnabled(true);
@@ -795,21 +794,16 @@ void MainWindow::createLogDialog()
 {
     auto dialog{ new LogDialog() };
 
-    disconnect(ui->viewLogButton, &QPushButton::clicked,
-        this, &MainWindow::createLogDialog);
+    //disconnect(ui->viewLogButton, &QPushButton::clicked, this, &MainWindow::createLogDialog);
 
-    connect(ui->viewLogButton, &QPushButton::clicked,
-        dialog, &QDialog::show);
-    connect(ui->viewLogButton, &QPushButton::clicked,
-        dialog, &QDialog::raise);
-    connect(ui->viewLogButton, &QPushButton::clicked,
-        dialog, &QDialog::activateWindow);
+    //connect(ui->viewLogButton, &QPushButton::clicked, dialog, &QDialog::show);
+    //connect(ui->viewLogButton, &QPushButton::clicked, dialog, &QDialog::raise);
+    //connect(ui->viewLogButton, &QPushButton::clicked, dialog, &QDialog::activateWindow);
 
-    connect(dialog, &QDialog::finished,
-        [this]() {
-            connect(ui->viewLogButton, &QPushButton::clicked,
-                this, &MainWindow::createLogDialog);
-        });
+    //connect(dialog, &QDialog::finished,
+    //    [this]() {
+            //connect(ui->viewLogButton, &QPushButton::clicked, this, &MainWindow::createLogDialog);
+    //    });
     connect(dialog, &QDialog::finished,
         dialog, &QDialog::deleteLater);
 

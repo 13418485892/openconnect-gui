@@ -68,7 +68,7 @@ void EditDialog::load_win_certs()
     QString prekey = ss->get_key_url();
 
     this->winCerts.clear();
-    ui->loadWinCertList->clear();
+    //ui->loadWinCertList->clear();
 
     int ret = -1;
     gnutls_system_key_iter_t iter = nullptr;
@@ -87,11 +87,11 @@ void EditDialog::load_win_certs()
                 l = QString::fromUtf8(label);
             else
                 l = QString::fromUtf8(cert_url);
-            ui->loadWinCertList->addItem(l);
+            //ui->loadWinCertList->addItem(l);
             if (prekey.isEmpty() == false) {
                 if (QString::compare(prekey, QString::fromUtf8(key_url), Qt::CaseSensitive) == 0) {
                     ui->userCertEdit->setText(cert_url);
-                    ui->userKeyEdit->setText(prekey);
+                    //ui->userKeyEdit->setText(prekey);
 
                     idx = row;
                 }
@@ -106,8 +106,8 @@ void EditDialog::load_win_certs()
     } while (ret >= 0);
 
     if (idx != -1) {
-        ui->loadWinCertList->setCurrentRow(idx);
-        ui->loadWinCertList->item(idx)->setSelected(true);
+        //ui->loadWinCertList->setCurrentRow(idx);
+        //ui->loadWinCertList->item(idx)->setSelected(true);
     }
     gnutls_system_key_iter_deinit(iter);
 #endif
@@ -121,7 +121,7 @@ EditDialog::EditDialog(QString server, QWidget* parent)
     ui->setupUi(this);
 
     VpnProtocolModel* model = new VpnProtocolModel(this);
-    ui->protocolComboBox->setModel(model);
+    //ui->protocolComboBox->setModel(model);
 
     if (ss->load(server) < 0) {
         QMessageBox::information(this,
@@ -141,27 +141,27 @@ EditDialog::EditDialog(QString server, QWidget* parent)
     ui->gatewayEdit->setText(ss->get_servername());
     ui->userCertHash->setText(ss->get_client_cert_hash());
     ui->caCertHash->setText(ss->get_ca_cert_hash());
-    ui->batchModeBox->setChecked(ss->get_batch_mode());
-    ui->minimizeBox->setChecked(ss->get_minimize());
-    ui->useProxyBox->setChecked(ss->get_proxy());
-    ui->disableUdpBox->setChecked(ss->get_disable_udp());
-    ui->reconnectTimeoutSpinBox->setValue(ss->get_reconnect_timeout());
-    ui->dtlsAttemptPeriodSpinBox->setValue(ss->get_dtls_reconnect_timeout());
+    //ui->batchModeBox->setChecked(ss->get_batch_mode());
+    //ui->minimizeBox->setChecked(ss->get_minimize());
+    //ui->useProxyBox->setChecked(ss->get_proxy());
+    //ui->disableUdpBox->setChecked(ss->get_disable_udp());
+    //ui->reconnectTimeoutSpinBox->setValue(ss->get_reconnect_timeout());
+    //ui->dtlsAttemptPeriodSpinBox->setValue(ss->get_dtls_reconnect_timeout());
 
     // Load the windows certificates
     load_win_certs();
 
     int type = ss->get_token_type();
     if (type >= 0) {
-        ui->tokenBox->setCurrentIndex(token_tab(ss->get_token_type()));
-        ui->tokenEdit->setText(ss->get_token_str());
+        //ui->tokenBox->setCurrentIndex(token_tab(ss->get_token_type()));
+        //ui->tokenEdit->setText(ss->get_token_str());
     }
 
-    ui->protocolComboBox->setCurrentIndex(ss->get_protocol_id());
+    //ui->protocolComboBox->setCurrentIndex(ss->get_protocol_id());
 
     QString hash;
     ss->get_server_hash(hash);
-    ui->serverCertHash->setText(hash);
+    //ui->serverCertHash->setText(hash);
 }
 
 EditDialog::~EditDialog()
@@ -191,29 +191,29 @@ void EditDialog::on_buttonBox_accepted()
         return;
     }
 
-    if (ui->caCertEdit->text().isEmpty() == false) {
-        if (ss->set_ca_cert(ui->caCertEdit->text()) != 0) {
-            QMessageBox mbox;
-            mbox.setText(tr("Cannot import CA certificate."));
-            if (ss->m_last_err.isEmpty() == false)
-                mbox.setInformativeText(ss->m_last_err);
-            mbox.exec();
-            return;
-        } else {
-            ui->caCertHash->setText(ss->get_ca_cert_hash());
-        }
-    }
+    //if (ui->caCertEdit->text().isEmpty() == false) {
+    //    if (ss->set_ca_cert(ui->caCertEdit->text()) != 0) {
+    //        QMessageBox mbox;
+    //        mbox.setText(tr("Cannot import CA certificate."));
+    //        if (ss->m_last_err.isEmpty() == false)
+    //            mbox.setInformativeText(ss->m_last_err);
+    //        mbox.exec();
+    //        return;
+    //    } else {
+    //        ui->caCertHash->setText(ss->get_ca_cert_hash());
+    //    }
+    //}
 
-    if (ui->userKeyEdit->text().isEmpty() == false) {
-        if (ss->set_client_key(ui->userKeyEdit->text()) != 0) {
-            QMessageBox mbox;
-            mbox.setText(tr("Cannot import user key."));
-            if (ss->m_last_err.isEmpty() == false)
-                mbox.setInformativeText(ss->m_last_err);
-            mbox.exec();
-            return;
-        }
-    }
+    //if (ui->userKeyEdit->text().isEmpty() == false) {
+    //    if (ss->set_client_key(ui->userKeyEdit->text()) != 0) {
+    //        QMessageBox mbox;
+    //        mbox.setText(tr("Cannot import user key."));
+    //        if (ss->m_last_err.isEmpty() == false)
+    //            mbox.setInformativeText(ss->m_last_err);
+    //        mbox.exec();
+    //        return;
+    //    }
+    //}
 
     if (ui->userCertEdit->text().isEmpty() == false) {
         if (ss->set_client_cert(ui->userCertEdit->text()) != 0) {
@@ -237,24 +237,24 @@ void EditDialog::on_buttonBox_accepted()
     ss->set_label(ui->nameEdit->text());
     ss->set_username(ui->usernameEdit->text());
     ss->set_servername(ui->gatewayEdit->text());
-    ss->set_batch_mode(ui->batchModeBox->isChecked());
-    ss->set_minimize(ui->minimizeBox->isChecked());
-    ss->set_proxy(ui->useProxyBox->isChecked());
-    ss->set_disable_udp(ui->disableUdpBox->isChecked());
-    ss->set_reconnect_timeout(ui->reconnectTimeoutSpinBox->value());
-    ss->set_dtls_reconnect_timeout(ui->dtlsAttemptPeriodSpinBox->value());
+    //ss->set_batch_mode(ui->batchModeBox->isChecked());
+    //ss->set_minimize(ui->minimizeBox->isChecked());
+    //ss->set_proxy(ui->useProxyBox->isChecked());
+    //ss->set_disable_udp(ui->disableUdpBox->isChecked());
+    //ss->set_reconnect_timeout(ui->reconnectTimeoutSpinBox->value());
+    //ss->set_dtls_reconnect_timeout(ui->dtlsAttemptPeriodSpinBox->value());
 
-    int type = ui->tokenBox->currentIndex();
-    if (type != -1 && ui->tokenEdit->text().isEmpty() == false) {
-        ss->set_token_str(ui->tokenEdit->text());
-        ss->set_token_type(token_rtab[type]);
-    } else {
-        ss->set_token_str("");
-        ss->set_token_type(-1);
-    }
+    //int type = ui->tokenBox->currentIndex();
+    //if (type != -1 && ui->tokenEdit->text().isEmpty() == false) {
+    //    ss->set_token_str(ui->tokenEdit->text());
+    //    ss->set_token_type(token_rtab[type]);
+    //} else {
+    //    ss->set_token_str("");
+    //    ss->set_token_type(-1);
+    //}
 
-    ss->set_protocol_id(ui->protocolComboBox->currentIndex());
-    ss->set_protocol_name(ui->protocolComboBox->currentData(Qt::UserRole + 1).toString());
+    //ss->set_protocol_id(ui->protocolComboBox->currentIndex());
+    //ss->set_protocol_name(ui->protocolComboBox->currentData(Qt::UserRole + 1).toString());
 
     ss->save();
     this->accept();
@@ -282,7 +282,7 @@ void EditDialog::on_userKeyButton_clicked()
         tr("Private key Files (*.key *.pem *.der *.p8 *.p12)"));
 
     // FIXME: check empty result
-    ui->userKeyEdit->setText(filename);
+    //ui->userKeyEdit->setText(filename);
 }
 
 void EditDialog::on_caCertButton_clicked()
@@ -292,7 +292,7 @@ void EditDialog::on_caCertButton_clicked()
         tr("Certificate Files (*.crt *.pem *.der)"));
 
     // FIXME: check empty result
-    ui->caCertEdit->setText(filename);
+    //ui->caCertEdit->setText(filename);
 }
 
 void EditDialog::on_userCertClear_clicked()
@@ -305,13 +305,13 @@ void EditDialog::on_userCertClear_clicked()
 void EditDialog::on_userKeyClear_clicked()
 {
     ss->clear_key();
-    ui->userKeyEdit->clear();
+    //ui->userKeyEdit->clear();
 }
 
 void EditDialog::on_caCertClear_clicked()
 {
     ss->clear_ca();
-    ui->caCertEdit->clear();
+    //ui->caCertEdit->clear();
     ui->caCertHash->clear();
 }
 
@@ -322,8 +322,8 @@ void EditDialog::on_serverCertClear_clicked()
 
 void EditDialog::on_tokenClear_clicked()
 {
-    ui->tokenBox->setCurrentIndex(-1);
-    ui->tokenEdit->clear();
+    //ui->tokenBox->setCurrentIndex(-1);
+    //ui->tokenEdit->clear();
 }
 
 void EditDialog::on_groupnameClear_clicked()
@@ -334,14 +334,14 @@ void EditDialog::on_groupnameClear_clicked()
 
 void EditDialog::on_loadWinCert_clicked()
 {
-    int idx = ui->loadWinCertList->currentRow();
-    win_cert_st st;
-    if (idx < 0 || this->winCerts.size() <= (unsigned)idx)
-        return;
+    //int idx = ui->loadWinCertList->currentRow();
+    //win_cert_st st;
+    //if (idx < 0 || this->winCerts.size() <= (unsigned)idx)
+    //    return;
 
-    st = this->winCerts.at(idx);
-    ui->userCertEdit->setText(st.cert_url);
-    ui->userKeyEdit->setText(st.key_url);
+    //st = this->winCerts.at(idx);
+    //ui->userCertEdit->setText(st.cert_url);
+    //ui->userKeyEdit->setText(st.key_url);
 }
 
 void EditDialog::on_groupnameEdit_textChanged(const QString& arg1)
@@ -351,17 +351,17 @@ void EditDialog::on_groupnameEdit_textChanged(const QString& arg1)
 
 void EditDialog::on_caCertEdit_textChanged(const QString& arg1)
 {
-    ui->caCertClear->setEnabled(!arg1.isEmpty());
+    //ui->caCertClear->setEnabled(!arg1.isEmpty());
 }
 
 void EditDialog::on_serverCertHash_textChanged(const QString& arg1)
 {
-    ui->serverCertClear->setEnabled(!arg1.isEmpty());
+    //ui->serverCertClear->setEnabled(!arg1.isEmpty());
 }
 
 void EditDialog::on_tokenEdit_textChanged(const QString& arg1)
 {
-    ui->tokenClear->setEnabled(!arg1.isEmpty());
+    //ui->tokenClear->setEnabled(!arg1.isEmpty());
 }
 
 void EditDialog::on_userCertEdit_textChanged(const QString& arg1)
@@ -371,17 +371,17 @@ void EditDialog::on_userCertEdit_textChanged(const QString& arg1)
 
 void EditDialog::on_userKeyEdit_textChanged(const QString& arg1)
 {
-    ui->userKeyClear->setEnabled(!arg1.isEmpty());
+    //ui->userKeyClear->setEnabled(!arg1.isEmpty());
 }
 
 void EditDialog::on_loadWinCertList_itemSelectionChanged()
 {
-    ui->loadWinCert->setEnabled(!ui->loadWinCertList->selectedItems().empty());
+    //ui->loadWinCert->setEnabled(!ui->loadWinCertList->selectedItems().empty());
 }
 
 void EditDialog::on_resetWinCertSelection_clicked()
 {
-    ui->loadWinCertList->setCurrentRow(-1);
+    //ui->loadWinCertList->setCurrentRow(-1);
 
     on_userCertClear_clicked();
     on_userKeyClear_clicked();
