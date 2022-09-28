@@ -186,9 +186,8 @@ static int process_auth_form(void* privdata, struct oc_auth_form* form)
             }
 
             do {
-                MyInputDialog dialog(vpn->m, QLatin1String(opt->name),
-                    QLatin1String(opt->label),
-                    QLineEdit::Normal);
+                // MyInputDialog dialog(vpn->m, QLatin1String(opt->name), QLatin1String(opt->label), QLineEdit::Normal);
+                MyInputDialog dialog(vpn->m, "用户名", "请填入用户名", QLineEdit::Normal);
                 dialog.show();
                 ok = dialog.result(text);
 
@@ -216,9 +215,8 @@ static int process_auth_form(void* privdata, struct oc_auth_form* form)
             }
 
             do {
-                MyInputDialog dialog(vpn->m, QLatin1String(opt->name),
-                    QLatin1String(opt->label),
-                    QLineEdit::Password);
+                // MyInputDialog dialog(vpn->m, QLatin1String(opt->name), QLatin1String(opt->label), QLineEdit::Password);
+                MyInputDialog dialog(vpn->m, "密码", "请填入获取的密码：", QLineEdit::Password);
                 dialog.show();
                 ok = dialog.result(text);
 
