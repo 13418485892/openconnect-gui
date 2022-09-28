@@ -441,7 +441,7 @@ void MainWindow::changeStatus(int val)
 
         ui->iconLabel->setPixmap(ON_ICON);
         ui->connectionButton->setIcon(QIcon(":/images/process-stop.png"));
-        ui->connectionButton->setText(tr("Disconnect"));
+        ui->connectionButton->setText(tr("断开连接"));
 
         QFileSelector selector;
         QIcon icon(selector.select(QStringLiteral(":/images/network-connected.png")));
@@ -482,7 +482,7 @@ void MainWindow::changeStatus(int val)
 
         ui->iconLabel->setPixmap(CONNECTING_ICON);
         ui->connectionButton->setIcon(QIcon(":/images/process-stop.png"));
-        ui->connectionButton->setText(tr("Cancel"));
+        ui->connectionButton->setText(tr("取 消"));
         blink_timer->start(1500);
 
         disconnect(ui->connectionButton, &QPushButton::clicked,
@@ -514,7 +514,7 @@ void MainWindow::changeStatus(int val)
         ui->iconLabel->setPixmap(OFF_ICON);
         ui->connectionButton->setEnabled(true);
         ui->connectionButton->setIcon(QIcon(":/images/network-wired.png"));
-        ui->connectionButton->setText(tr("Connect"));
+        ui->connectionButton->setText(tr("连 接"));
 
         if (m_trayIcon) {
             QFileSelector selector;
@@ -617,6 +617,9 @@ void MainWindow::on_disconnectClicked()
     }
     Logger::instance().addMessage(QObject::tr("Disconnecting..."));
     term_thread(this, &this->cmd_fd);
+
+    // 如果已经断开连接，使能删除菜单
+    ui->actionRemoveSelectedProfile->setEnabled(true);
 }
 
 void MainWindow::on_connectClicked()
@@ -706,6 +709,9 @@ void MainWindow::on_connectClicked()
     future = QtConcurrent::run(main_loop, vpninfo, this);
 
     this->futureWatcher.setFuture(future);
+
+    // 如果已经连接，去使能删除菜单
+    ui->actionRemoveSelectedProfile->setEnabled(false);
 
     return;
 fail: // LCA: remote 'fail' label :/
@@ -818,7 +824,7 @@ void MainWindow::createTrayIcon()
 
     m_trayIconMenuConnections = new QMenu(this);
     m_trayIconMenu->addMenu(m_trayIconMenuConnections);
-    m_disconnectAction = new QAction(tr("Disconnect"), this);
+    m_disconnectAction = new QAction(tr("断开连接"), this);
     m_trayIconMenu->addAction(m_disconnectAction);
     connect(m_disconnectAction, &QAction::triggered,
         this, &MainWindow::on_disconnectClicked);

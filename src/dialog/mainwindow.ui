@@ -131,7 +131,7 @@
          <string notr="true">font: 12pt &quot;黑体&quot;;</string>
         </property>
         <property name="text">
-         <string>connect</string>
+         <string>连 接</string>
         </property>
        </widget>
        <widget class="QToolButton" name="serverListControl">
@@ -224,7 +224,7 @@
      <normaloff>:/images/text-editor.png</normaloff>:/images/text-editor.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Edit selected profile</string>
+    <string>编辑</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -236,7 +236,7 @@
      <normaloff>:/images/trashcan.png</normaloff>:/images/trashcan.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Remove selected profile</string>
+    <string>删除</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -306,7 +306,7 @@
      <normaloff>:/images/text-new.png</normaloff>:/images/text-new.png</iconset>
    </property>
    <property name="text">
-    <string>New profile</string>
+    <string>新增</string>
    </property>
    <property name="toolTip">
     <string>New profile (advanced setup)</string>
