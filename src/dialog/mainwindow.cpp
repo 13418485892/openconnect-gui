@@ -144,6 +144,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     s2_connectionReady->assignProperty(m_trayIconMenuConnections, "enabled", true);
     machine->addState(s2_connectionReady);
 
+    // ----------------------------------- ServerListTransition -------------------------
     class ServerListTransition : public QSignalTransition {
     public:
         ServerListTransition(QComboBox* cb, bool hasServers)
@@ -174,6 +175,7 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     ServerListTransition* t2 = new ServerListTransition(ui->serverList, false);
     t2->setTargetState(s1_noProfiles);
     s2_connectionReady->addTransition(t2);
+    // ----
 
     machine->setInitialState(s1_noProfiles);
     machine->start();
@@ -307,6 +309,9 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     s112_minimizedWindow->addTransition(restoreEvent);
 
     m_appWindowStateMachine->start();
+
+    // --- 建立一个连接，用于收消息
+    connect(&Logger::instance(), &Logger::newLogMessage, this, &MainWindow::append, Qt::QueuedConnection);
 }
 
 static void term_thread(MainWindow* m, SOCKET* fd)
@@ -987,3 +992,26 @@ bool MainWindow::IsValidIdCode(const QString &idCode)
     }
 }
 
+// 用于logger记录
+void MainWindow::append(const Logger::Message& message)
+{
+    QDateTime dt;
+    dt.setMSecsSinceEpoch(message.timeStamp);
+    QString str = QString("%1 | %2 | %3")
+                  .arg(dt.toString("yyyy-MM-dd hh:mm:ss"))
+                  .arg(QString::number((long long)message.threadId, 16), 4)
+                  .arg(message.text);
+    //m_timer->start();
+
+    QFile file("logger.txt");
+    //文件不存在
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Append)) {
+        return;
+    }
+
+    QTextStream stream(&file);
+    stream<<str;
+    stream<<endl;
+
+    file.close();
+}

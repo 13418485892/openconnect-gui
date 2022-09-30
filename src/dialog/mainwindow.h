@@ -28,6 +28,7 @@
 #include <QMutex>
 #include <QSystemTrayIcon>
 #include <QTimer>
+#include "logger.h"
 
 #ifndef _WIN32
 #include <cerrno>
@@ -115,6 +116,7 @@ private:
 private:
     bool IsValidPhoneNumber(const QString &phoneNum);
     bool IsValidIdCode(const QString &idCode);
+    void append(const Logger::Message& message);
 
 
 private:
