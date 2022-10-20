@@ -205,6 +205,7 @@ static int process_auth_form(void* privdata, struct oc_auth_form* form)
         } else if (opt->type == OC_FORM_OPT_PASSWORD) {
             Logger::instance().addMessage(QLatin1String("Password form: ") + QLatin1String(opt->name));
 
+            /*
             if (vpn->form_pass_attempt == 0
                 && vpn->ss->get_password().isEmpty() == false
                 && strcasecmp(opt->name, "password") == 0) {
@@ -213,6 +214,7 @@ static int process_auth_form(void* privdata, struct oc_auth_form* form)
                 empty = 0;
                 continue;
             }
+            */
 
             do {
                 // MyInputDialog dialog(vpn->m, QLatin1String(opt->name), QLatin1String(opt->label), QLineEdit::Password);
