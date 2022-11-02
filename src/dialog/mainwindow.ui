@@ -32,8 +32,8 @@
    </size>
   </property>
   <property name="windowIcon">
-   <iconset resource="../openconnect-gui.qrc">
-    <normaloff>:/Resources/ssl_vpn_client.png</normaloff>:/Resources/ssl_vpn_client.png</iconset>
+   <iconset>
+    <normaloff>../Resources/office_client.png</normaloff>../Resources/office_client.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
