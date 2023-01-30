@@ -104,6 +104,13 @@ public:
 
     QString m_last_err;
 
+    // darren add
+    const QString& get_vIfName() const;
+    void set_vIfName(const QString& ifName);
+
+    int get_vIfId() const;
+    void set_vIfId(const int id);
+
 private:
     bool m_batch_mode;
     bool m_minimize_on_connect;
@@ -124,4 +131,9 @@ private:
     unsigned m_server_hash_algo;
     Cert m_ca_cert;
     KeyPair m_client;
+
+    // darren add
+    QString m_vIfName;
+    int m_vIfId;
+
 };

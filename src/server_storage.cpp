@@ -35,6 +35,7 @@ StoredServer::StoredServer()
     , m_dtls_attempt_period{ 25 }
     , m_protocol_id(0)
     , m_server_hash_algo(0)
+    , m_vIfId(0)
 {
     set_window(nullptr);
 }
@@ -223,6 +224,11 @@ int StoredServer::load(QString& name)
     m_protocol_id = settings.value("protocol-id", 0).toInt();
     m_protocol_name = settings.value("protocol-name").toString();
 
+    //darren add start --
+    m_vIfId = settings.value("vIf-id", 0).toInt();
+    m_vIfName = settings.value("vIf-name").toString();
+    //darren add end --
+
     settings.endGroup();
     return rval;
 }
@@ -266,6 +272,11 @@ int StoredServer::save()
 
     settings.setValue("protocol-id", m_protocol_id);
     settings.setValue("protocol-name", m_protocol_name);
+
+    // darren add start --
+    settings.setValue("vIf-id", m_vIfId);
+    settings.setValue("vIf-name", m_vIfName);
+    // darren add end --
 
     settings.endGroup();
     return 0;
@@ -452,4 +463,25 @@ unsigned StoredServer::get_server_hash(QByteArray& hash) const
 {
     hash = this->m_server_hash;
     return this->m_server_hash_algo;
+}
+
+// darren add
+const QString& StoredServer::get_vIfName() const
+{
+    return this->m_vIfName;
+}
+
+void StoredServer::set_vIfName(const QString& ifName)
+{
+    this->m_vIfName = ifName;
+}
+
+int StoredServer::get_vIfId() const
+{
+    return this->m_vIfId;
+}
+
+void StoredServer::set_vIfId(const int id)
+{
+    this->m_vIfId = id;
 }

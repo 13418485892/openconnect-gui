@@ -26,6 +26,7 @@
 #include <QItemSelectionModel>
 #include <QListWidget>
 #include <QMessageBox>
+#include "vIfinfo.h"
 
 // FIXME: this include should to into <openconnect.h>
 #ifdef _WIN32
@@ -123,6 +124,19 @@ EditDialog::EditDialog(QString server, QWidget* parent)
     VpnProtocolModel* model = new VpnProtocolModel(this);
     //ui->protocolComboBox->setModel(model);
 
+    // darren add start --
+    VirtualIfInfo vIf;
+    QVector<QString> ifNames = vIf.get_if_names();
+    int ifNameNum = ifNames.size();
+    for (int i=0; i<ifNameNum; i++)
+    {
+        ui->virtualIfNames->addItem(ifNames.at(i));
+    }
+    //ui->virtualIfNames->addItem("nihao");
+    //ui->virtualIfNames->addItem("hello");
+    // darren add end --
+
+
     if (ss->load(server) < 0) {
         QMessageBox::information(this,
             qApp->applicationName(),
@@ -141,6 +155,7 @@ EditDialog::EditDialog(QString server, QWidget* parent)
     ui->gatewayEdit->setText(ss->get_servername());
     ui->userCertHash->setText(ss->get_client_cert_hash());
     ui->caCertHash->setText(ss->get_ca_cert_hash());
+
     //ui->batchModeBox->setChecked(ss->get_batch_mode());
     //ui->minimizeBox->setChecked(ss->get_minimize());
     //ui->useProxyBox->setChecked(ss->get_proxy());
@@ -159,8 +174,12 @@ EditDialog::EditDialog(QString server, QWidget* parent)
 
     //ui->protocolComboBox->setCurrentIndex(ss->get_protocol_id());
 
-    QString hash;
-    ss->get_server_hash(hash);
+    // darren add start --
+    ui->virtualIfNames->setCurrentIndex(ss->get_vIfId());
+    // darren add end --
+
+    //QString hash;
+    //ss->get_server_hash(hash);
     //ui->serverCertHash->setText(hash);
 }
 
@@ -255,6 +274,11 @@ void EditDialog::on_buttonBox_accepted()
 
     //ss->set_protocol_id(ui->protocolComboBox->currentIndex());
     //ss->set_protocol_name(ui->protocolComboBox->currentData(Qt::UserRole + 1).toString());
+
+    // darren add start --
+    ss->set_vIfId(ui->virtualIfNames->currentIndex());
+    ss->set_vIfName(ui->virtualIfNames->currentText());
+    // darren add end --
 
     ss->save();
     this->accept();

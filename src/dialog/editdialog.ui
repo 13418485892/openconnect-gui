@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>412</width>
-    <height>271</height>
+    <height>325</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>9</x>
      <y>120</y>
      <width>401</width>
-     <height>91</height>
+     <height>141</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -27,19 +27,19 @@
    </property>
    <widget class="QWidget" name="localCertificateTab">
     <attribute name="title">
-     <string>本地证书</string>
+     <string>本地信息</string>
     </attribute>
     <widget class="QLabel" name="userCertificateLabel">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>51</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>用户证书</string>
+      <string>本地用户证书</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="userCertHash">
@@ -64,9 +64,9 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>90</x>
        <y>13</y>
-       <width>311</width>
+       <width>291</width>
        <height>31</height>
       </rect>
      </property>
@@ -101,13 +101,36 @@
       </item>
      </layout>
     </widget>
+    <widget class="QLabel" name="userCertificateLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>本地虚拟接口</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="virtualIfNames">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>71</y>
+       <width>291</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>230</y>
+     <y>280</y>
      <width>156</width>
      <height>23</height>
     </rect>

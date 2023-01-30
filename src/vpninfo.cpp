@@ -634,3 +634,4 @@ void VpnInfo::logVpncScriptOutput()
         Logger::instance().addMessage(QLatin1String("Could not open ") + tfile + ": " + QString::number((int)file.error()));
     }
 }
+
