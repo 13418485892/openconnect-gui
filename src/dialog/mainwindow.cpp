@@ -308,11 +308,6 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     restoreEvent->setTargetState(s111_normalWindow);
     s112_minimizedWindow->addTransition(restoreEvent);
 
-    // darren add
-    // QVector<QString> ifNames = VpnInfo.
-    ui->vIfNames->addItem("nihao");
-    ui->vIfNames->addItem("hello");
-
     m_appWindowStateMachine->start();
 
     // --- 建立一个连接，用于收消息

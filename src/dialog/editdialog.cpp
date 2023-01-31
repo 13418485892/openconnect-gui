@@ -132,8 +132,6 @@ EditDialog::EditDialog(QString server, QWidget* parent)
     {
         ui->virtualIfNames->addItem(ifNames.at(i));
     }
-    //ui->virtualIfNames->addItem("nihao");
-    //ui->virtualIfNames->addItem("hello");
     // darren add end --
 
 

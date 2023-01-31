@@ -374,7 +374,20 @@ static void setup_tun_vfn(void* privdata)
     vpncScriptFullPath.append(QCoreApplication::applicationDirPath());
     vpncScriptFullPath.append(QDir::separator());
     vpncScriptFullPath.append(DEFAULT_VPNC_SCRIPT);
-    int ret = openconnect_setup_tun_device(vpn->vpninfo, vpncScriptFullPath.constData(), NULL);
+    // int ret = openconnect_setup_tun_device(vpn->vpninfo, vpncScriptFullPath.constData(), NULL);
+
+    // darren add start --
+    int ret = -1;
+    QString vIfName = vpn->ss->get_vIfName();
+    // QMessageBox::about(nullptr, "vIfName", "vIfName");
+    if (vIfName == "default"){
+        ret = openconnect_setup_tun_device(vpn->vpninfo, vpncScriptFullPath.constData(), NULL);
+    }
+    else {
+        ret = openconnect_setup_tun_device(vpn->vpninfo, vpncScriptFullPath.constData(), vIfName.toStdString().c_str());
+    }
+    // darren add end --
+
     if (ret != 0) {
         vpn->last_err = QObject::tr("Error setting up the TUN device");
         //FIXME: ???        return ret;
